@@ -3,6 +3,7 @@ const morgan = require('morgan');
 var cors = require('cors');
 require('express-async-errors');
 require('dotenv').config();
+const check = require('./Functions/check');
 
 const app = express();
 app.use(express.json());
@@ -10,9 +11,11 @@ app.use(morgan('dev'));
 app.use(cors());
 
 app.get('/', function (req, res) {
-    res.json({
-        message: 'Hello from Sakila API'
-    });
+    var content = "dont be helllo pussy ";
+    const result = check(content);
+
+
+   res.status(200).json(result);
 })
 
 app.get('/err', function (req, res) {
