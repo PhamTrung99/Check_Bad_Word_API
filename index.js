@@ -10,13 +10,21 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-app.get('/', function (req, res) {
-    var content = "dont be helllo pussy ";
+app.get('/check/:content', function (req, res) {
+    var content = req.params.content;
     const result = check(content);
-
-
    res.status(200).json(result);
 })
+
+
+app.get('/addword', function (req, res) {
+    
+    const result = check(content);
+   res.status(200).json(result);
+})
+
+
+
 
 app.get('/err', function (req, res) {
     throw new Error('Error!');
