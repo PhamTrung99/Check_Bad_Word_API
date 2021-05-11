@@ -5,7 +5,7 @@ require('express-async-errors');
 require('dotenv').config();
 const message = require('./public/message.control');
 
-const swagOption = require('./swagger/swaggerOptions');
+const swagOption = require('./Swagger/swaggerOptions');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const auth = require('./middlewares/auth.mdw');
