@@ -1,9 +1,9 @@
-const express = require('express')
-const {checkBadWord,addWord,RemoveWord} = require('../Functions/checkBadWord')
+const express = require('express');
+const {checkBadWord,addWord,RemoveWord} = require('../Functions/checkBadWord');
 
 const router = express.Router();
 
-router.get('/check/:content', function (req, res) {
+router.get('/check/:content' ,function (req, res) {
     const result = checkBadWord(req.params.content);
    res.status(200).json(result);
 })
