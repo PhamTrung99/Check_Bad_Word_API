@@ -3,7 +3,6 @@ const morgan = require('morgan');
 var cors = require('cors');
 require('express-async-errors');
 require('dotenv').config();
-const {checkBadWord,addWord,RemoveWord} = require('./Functions/checkBadWord');
 const message = require('./public/message.control');
 
 
@@ -12,21 +11,14 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-app.get('/check/:content', function (req, res) {
-    const result = checkBadWord(req.params.content);
-   res.status(200).json(result);
+app.get('/', function (req, res) {
+   res.status(200).json({
+       'message': message.welcome
+   });
 })
 
+app.use('/', require('./routes/main.route'));
 
-app.get('/addword/:word', function (req, res) {
-   const result = addWord(req.params.word);
-   res.status(200).json(result);
-})
-
-app.get('/removeword/:word', function (req, res) {
-    const result = RemoveWord(req.params.word);
-    res.status(200).json(result);
- })
 
 app.get('/err', function (req, res) {
     throw new Error('Error!');
@@ -47,5 +39,5 @@ app.use(function (err, req, res, next) {
 
 
 app.listen(process.env.PORT, function () {
-    console.log(`Sakila api is running at http://localhost:${process.env.PORT}`);
+    console.log(`API is running at http://localhost:${process.env.PORT}`);
 })
