@@ -21,6 +21,7 @@ const checkBadWord = (content) => {
     var listBW = [];
     wordArr.forEach((word) => {
         var wFiltered = filter.clean(word);
+        word = word.toLowerCase();
         if (badWordListVi.includes(word)) {
             let arr = Array.from(word);
             arr = arr.fill('*');
